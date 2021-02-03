@@ -55,4 +55,4 @@ And concatenate the outputs:
     cat $filename.getLCA|grep -v 'NOMATCH'|grep 'genus\|family\|species\|subfamily\|subspecies\|subgenus'|grep 'Vertebrata'|awk '{print $2}'|sort|uniq -c|sort -nk1|awk -F ':' '{print $1}'
 ```
 
-For more detailed analysis of the identifcations use R. See the header names in .getlca_headers
+For more detailed analysis of the identifcations use R.
