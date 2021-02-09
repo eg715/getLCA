@@ -29,15 +29,15 @@ def main():
         print('\nWriting to: '+outfile)
         infile=open(infile,'r')
         outfile=open(outfile,'w')
-	outfile.write('Read_info\tLCA\tRank\tTaxid\tStats\tSeq_length\tSequence\tFamily\tGenus')
-	outfile.write("\n")
-        count_total=0
+    outfile.write('Read_info\tLCA\tRank\tTaxid\tStats\tSeq_length\tSequence\tFamily\tGenus')
+    outfile.write("\n")
+    count_total=0
 
 ############################ loop over line in samfile ##############
-        for line in infile.readlines():
+    for line in infile.readlines():
 
             if line=='\n':
-		              continue
+                      continue
             text=line.split()
 
             if text[0] in ['@SQ','@PG','@HD','@RG']:
@@ -47,7 +47,7 @@ def main():
             if text[0]!=prev_name and count_total!=0:
                 outfile.write(get_LCA_from_sam(lines,options.length,options.id_threshold,options.distance))
                 count_total=0
-		
+        
             if count_total==0:
 
                 prev_name=text[0]
@@ -55,11 +55,9 @@ def main():
                 lines=[]
             lines.append(line)
             count_total+=1
-        if 'lines' in locals():
-		outfile.write(get_LCA_from_sam(lines,options.length,options.id_threshold,options.distance))
+    if 'lines' in locals():
+        outfile.write(get_LCA_from_sam(lines,options.length,options.id_threshold,options.distance))
         outfile.close()
-
-
 
 if __name__ == '__main__':
     main()
