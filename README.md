@@ -31,6 +31,14 @@ cd getLCA
 ```    
 It is normal to get an IndexError message, the file will still be generated.
 
+Options for running are:
+```
+    -i percent identity threshold 0.95 is the default
+    -d edit distance for matches to be considered equally good -- unsure on how this works... 
+    By 5% of read length which was mentioned in the paper so 0.05? Or by the actual number of changes i.e. -d 5 allows 5 differences
+    -l min read length python get_LCA.py $filename.sam
+```    
+
 If you get a 'killed' message, this could be because the input sam file is too large. You can spilt the sam file: 
 ```
     samtools view -H yourfile.sam > your_header
